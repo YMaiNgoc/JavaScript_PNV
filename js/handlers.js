@@ -3,29 +3,42 @@ const status = document.getElementById("formStatus");
 const formTitle = document.getElementById("formTitle");
 const submitBtn = document.getElementById("submitBtn");
 const cancelBtn = document.getElementById("cancelBtn");
+const openModalBtn = document.getElementById("openModalBtn");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const modalOverlay = document.getElementById("modalOverlay");
 
 let editingUserId = null;
 
-// Đảm bảo nút Cancel ẩn khi trang load
-if (cancelBtn) {
-  cancelBtn.classList.remove("show");
+function openModal(isEdit = false) {
+  if (!modalOverlay) return;
+  if (!isEdit) {
+    resetFormMode(false);
+  }
+  modalOverlay.classList.add("show");
 }
 
-function resetFormMode() {
+function closeModal() {
+  if (!modalOverlay) return;
+  resetFormMode(false);
+  modalOverlay.classList.remove("show");
+}
+
+function resetFormMode(hideModal = true) {
   editingUserId = null;
   formTitle.textContent = "Add User";
   submitBtn.textContent = "Create";
-  cancelBtn.classList.remove("show");
   form.reset();
   status.textContent = "";
   status.style.color = "";
+  if (hideModal && modalOverlay) {
+    modalOverlay.classList.remove("show");
+  }
 }
 
 function setEditMode(user) {
   editingUserId = user.id;
   formTitle.textContent = `Edit User #${user.id}`;
   submitBtn.textContent = "Save Changes";
-  cancelBtn.classList.add("show");
   
   form.name.value = user.name || "";
   form.username.value = user.username || "";
@@ -37,7 +50,15 @@ function setEditMode(user) {
   status.style.color = "";
 }
 
-cancelBtn.addEventListener("click", resetFormMode);
+cancelBtn.addEventListener("click", closeModal);
+closeModalBtn.addEventListener("click", closeModal);
+openModalBtn.addEventListener("click", () => openModal(false));
+
+modalOverlay.addEventListener("click", (e) => {
+  if (e.target === modalOverlay) {
+    closeModal();
+  }
+});
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -68,7 +89,7 @@ form.addEventListener("submit", async (e) => {
 
       status.textContent = "User updated successfully (fake API)";
       status.style.color = "green";
-      resetFormMode();
+      closeModal();
     } else {
       status.textContent = "Creating user...";
       status.style.color = "";
@@ -85,7 +106,7 @@ form.addEventListener("submit", async (e) => {
 
       status.textContent = "User created successfully (fake API)";
       status.style.color = "green";
-      form.reset();
+      closeModal();
     }
   } catch (err) {
     status.textContent = editingUserId 
@@ -97,10 +118,7 @@ form.addEventListener("submit", async (e) => {
 
 function startEditUser(user) {
   setEditMode(user);
-  document.querySelector(".card:last-child").scrollIntoView({ 
-    behavior: "smooth", 
-    block: "nearest" 
-  });
+  openModal(true);
 }
 
 async function handleDeleteUser(userId) {

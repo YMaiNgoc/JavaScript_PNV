@@ -22,11 +22,14 @@
       </div>
     </header>
 
-    <section class="grid">
+    <section class="grid single-col">
       <div class="card">
         <div class="card-header">
           <h2>User List</h2>
-          <button id="reloadBtn">Reload</button>
+          <div class="card-actions">
+            <button id="reloadBtn" class="ghost-btn">Reload</button>
+            <button id="openModalBtn" class="primary-btn">Add User</button>
+          </div>
         </div>
 
         <table>
@@ -48,23 +51,31 @@
           </tbody>
         </table>
       </div>
-
-      <div class="card">
+    </section>
+  </div>
+  <div id="modalOverlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
         <h2 id="formTitle">Add User</h2>
-        <form id="userForm">
+        <button id="closeModalBtn" class="icon-btn" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form id="userForm">
+        <div class="form-grid">
           <input name="name" placeholder="Name" required />
           <input name="username" placeholder="Username" required />
           <input name="email" placeholder="Email" type="email" required />
           <input name="phone" placeholder="Phone" required />
           <input name="website" placeholder="Website" required />
-          <div class="form-actions">
-            <button type="submit" id="submitBtn">Create</button>
-            <button type="button" id="cancelBtn">Cancel</button>
-          </div>
-          <p id="formStatus"></p>
-        </form>
-      </div>
-    </section>
+        </div>
+        <div class="form-actions">
+          <button type="submit" id="submitBtn" class="primary-btn">Create</button>
+          <button type="button" id="cancelBtn" class="ghost-btn">Cancel</button>
+        </div>
+        <p id="formStatus"></p>
+      </form>
+    </div>
   </div>
 
   <script src="js/config.js"></script>
