@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User CRUD</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/table.css" />
+  <link rel="stylesheet" href="css/form.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">JSONPlaceholder Demo</p>
+        <h1>User CRUD</h1>
+        <p class="subhead">Vanilla JavaScript</p>
+      </div>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card-header">
+          <h2>User List</h2>
+          <button id="reloadBtn">Reload</button>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Website</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <tr>
+              <td colspan="7">Loading...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2 id="formTitle">Add User</h2>
+        <form id="userForm">
+          <input name="name" placeholder="Name" required />
+          <input name="username" placeholder="Username" required />
+          <input name="email" placeholder="Email" type="email" required />
+          <input name="phone" placeholder="Phone" required />
+          <input name="website" placeholder="Website" required />
+          <div class="form-actions">
+            <button type="submit" id="submitBtn">Create</button>
+            <button type="button" id="cancelBtn">Cancel</button>
+          </div>
+          <p id="formStatus"></p>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/handlers.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

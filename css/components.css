@@ -1,0 +1,149 @@
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+button {
+  border-radius: 10px;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .card-header h2 {
+    font-size: 18px;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 12px;
+  }
+
+  .card-header {
+    margin-bottom: 12px;
+  }
+
+  .card-header h2 {
+    font-size: 16px;
+  }
+
+  button {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}
+
+.primary-btn {
+  background: linear-gradient(120deg, var(--primary), #38bdf8);
+  color: #ffffff;
+}
+
+.primary-btn:hover {
+  opacity: 0.9;
+}
+
+.ghost-btn {
+  background: #f1f5f9;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.ghost-btn:hover {
+  background: #e2e8f0;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 6px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-edit i,
+.btn-delete i {
+  font-size: 14px;
+}
+@media (max-width: 768px) {
+  .btn-edit,
+  .btn-delete {
+    padding: 5px 8px;
+    font-size: 12px;
+    min-width: 30px;
+  }
+
+  .btn-edit i,
+  .btn-delete i {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-edit,
+  .btn-delete {
+    padding: 4px 6px;
+    font-size: 11px;
+    min-width: 28px;
+  }
+
+  .btn-edit i,
+  .btn-delete i {
+    font-size: 11px;
+  }
+}
+
+.btn-edit {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-edit:hover {
+  background: #2563eb;
+}
+
+.btn-delete {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+}
